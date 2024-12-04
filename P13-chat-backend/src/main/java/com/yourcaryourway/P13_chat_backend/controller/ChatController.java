@@ -2,23 +2,23 @@ package com.yourcaryourway.P13_chat_backend.controller;
 
 
 import com.yourcaryourway.P13_chat_backend.model.Message;
-import com.yourcaryourway.P13_chat_backend.repository.MessageRepository;
+import com.yourcaryourway.P13_chat_backend.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+
+@RestController
 public class ChatController {
 
     @Autowired
-    private MessageRepository messageRepository;
+    private MessageService messageService;
 
     @MessageMapping("/send")
     @SendTo("/topic/messages")
     public Message sendMessage(Message message) {
-        message.setTimestamp(java.time.LocalDateTime.now());
-        messageRepository.save(message);  // Sauvegarde en base de données
-        return message;
+        // Sauvegarde le message en utilisant le service
+        return messageService.saveMessage(message);
     }
 }
