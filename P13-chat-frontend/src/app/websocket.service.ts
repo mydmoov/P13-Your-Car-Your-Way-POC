@@ -1,42 +1,36 @@
-// websocket.service.ts
 import { Injectable } from '@angular/core';
-import {Client, Stomp} from '@stomp/stompjs';
-import SockJS from 'sockjs-client';
-
-// Polyfill for global
-if (typeof window !== 'undefined') {
-  (window as any).global = window;
-}
+import { io, Socket } from 'socket.io-client';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class WebSocketService {
-
-  private stompClient: any;
+  private socket: Socket | undefined;
+  private readonly SERVER_URL = 'http://localhost:3666'; // Mettre à jour avec le nouveau port
 
   constructor() {
     this.initializeWebSocketConnection();
   }
 
   initializeWebSocketConnection(): void {
-    const socket = new SockJS('http://localhost:3555/chat');
-    this.stompClient = Stomp.over(socket);
-    if (this.stompClient) {
-      this.stompClient.connect({}, (frame:any) => {
-        console.log('Connected: ' + frame);
-        this.stompClient.subscribe('/topic/messages', (message:any) => {
-          if (message.body) {
-            console.log(message.body);
-          }
-        });
-      }, (error:any) => {
-        console.error('Error: ' + error);
-      });
-    }
+    this.socket = io(this.SERVER_URL); // Connexion au backend via Socket.IO
+
+    this.socket.on('connect', () => {
+      console.log('Connected to WebSocket server');
+    });
+
+    this.socket.on('disconnect', () => {
+      console.log('Disconnected from WebSocket server');
+    });
+
+    this.socket.on('chatMessage', (message: any) => {
+      console.log('Received message: ', message);
+    });
   }
 
   sendMessage(message: { sender: string; content: string }): void {
-    this.stompClient.send('/app/chat', {}, JSON.stringify(message));
+    if (this.socket) {
+      this.socket.emit('chatMessage', message); // Envoyer un message au serveur
+    }
   }
 }

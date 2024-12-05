@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import {WebSocketService} from "../websocket.service";
+import { WebSocketService } from '../websocket.service';
 
 @Component({
   selector: 'app-chat',
@@ -15,13 +15,11 @@ export class ChatComponent {
   messageContent: string = '';
   sender: string = 'Client';
 
-  constructor( private webSocketService: WebSocketService) {
-
-  }
+  constructor(private webSocketService: WebSocketService) {}
 
   sendMessage(): void {
     const message = { sender: this.sender, content: this.messageContent };
-    this.webSocketService.sendMessage(message); // Envoyer le message au serveur
-    this.messageContent = ''; // Réinitialise l'entrée
+    this.webSocketService.sendMessage(message);
+    this.messageContent = '';
   }
 }
