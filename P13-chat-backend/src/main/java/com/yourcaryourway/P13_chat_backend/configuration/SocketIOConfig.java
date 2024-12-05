@@ -12,6 +12,7 @@ public class SocketIOConfig {
         com.corundumstudio.socketio.Configuration config = new com.corundumstudio.socketio.Configuration();
         config.setHostname("localhost");
         config.setPort(3666);
+        config.setOrigin("*");
         return new SocketIOServer(config);
     }
 }

@@ -20,4 +20,5 @@ public class ChatController {
         System.out.println("Message reçu de " + message.getSender() + ": " + message.getContent());
         server.getBroadcastOperations().sendEvent("chatMessage", message);
     }
+
 }
