@@ -1,24 +1,23 @@
 package com.yourcaryourway.P13_chat_backend.controller;
 
-
+import com.corundumstudio.socketio.SocketIOClient;
+import com.corundumstudio.socketio.SocketIOServer;
+import com.corundumstudio.socketio.annotation.OnEvent;
 import com.yourcaryourway.P13_chat_backend.model.Message;
-import com.yourcaryourway.P13_chat_backend.service.MessageService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.SendTo;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Component;
 
-
-@RestController
+@Component
 public class ChatController {
 
-    @Autowired
-    private MessageService messageService;
+    private final SocketIOServer server;
 
-    @MessageMapping("/send")
-    @SendTo("/topic/messages")
-    public Message sendMessage(Message message) {
-        // Sauvegarde le message en utilisant le service
-        return messageService.saveMessage(message);
+    public ChatController(SocketIOServer server) {
+        this.server = server;
+    }
+
+    @OnEvent("chatMessage")
+    public void onChatMessage(SocketIOClient client, Message message) {
+        System.out.println("Message received: " + message.getContent());
+        server.getBroadcastOperations().sendEvent("chatMessage", message);
     }
 }
