@@ -1,6 +1,5 @@
 package com.yourcaryourway.P13_chat_backend.runner;
 
-
 import com.corundumstudio.socketio.SocketIOServer;
 import org.springframework.stereotype.Component;
 
@@ -18,13 +17,13 @@ public class SocketIOServerRunner {
 
     @PostConstruct
     public void startServer() {
-        System.out.println("Starting Socket.IO server...");
+        System.out.println("Démarrage du serveur Socket.IO...");
         server.start();
     }
 
     @PreDestroy
     public void stopServer() {
-        System.out.println("Stopping Socket.IO server...");
+        System.out.println("Arrêt du serveur Socket.IO...");
         server.stop();
     }
 }

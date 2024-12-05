@@ -17,7 +17,7 @@ public class ChatController {
 
     @OnEvent("chatMessage")
     public void onChatMessage(SocketIOClient client, Message message) {
-        System.out.println("Message received: " + message.getContent());
+        System.out.println("Message reçu de " + message.getSender() + ": " + message.getContent());
         server.getBroadcastOperations().sendEvent("chatMessage", message);
     }
 }
