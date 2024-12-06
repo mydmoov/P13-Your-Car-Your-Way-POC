@@ -16,7 +16,11 @@ public class MessageService {
 
     @Transactional
     public Message saveMessage(Message message) {
+        if (message == null || message.getSender() == null || message.getContent() == null) {
+            throw new IllegalArgumentException("Le message est invalide.");
+        }
         message.setTimestamp(LocalDateTime.now());
         return messageRepository.save(message);
     }
+
 }

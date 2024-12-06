@@ -17,8 +17,11 @@ public class ChatController {
 
     @OnEvent("chatMessage")
     public void onChatMessage(SocketIOClient client, Message message) {
+        if (message == null || message.getContent() == null || message.getContent().trim().isEmpty()) {
+            System.out.println("Message vide reçu. Ignoré.");
+            return;
+        }
         System.out.println("Message reçu de " + message.getSender() + ": " + message.getContent());
         server.getBroadcastOperations().sendEvent("chatMessage", message);
     }
-
 }

@@ -10,6 +10,7 @@ import jakarta.annotation.PreDestroy;
 public class SocketIOServerRunner {
 
     private final SocketIOServer server;
+    private boolean isRunning = false; // Indicateur pour le statut du serveur
 
     public SocketIOServerRunner(SocketIOServer server) {
         this.server = server;
@@ -17,13 +18,25 @@ public class SocketIOServerRunner {
 
     @PostConstruct
     public void startServer() {
-        System.out.println("Démarrage du serveur Socket.IO...");
-        server.start();
+        if (!isRunning) {
+            System.out.println("Démarrage du serveur Socket.IO...");
+            server.start();
+            isRunning = true;
+        } else {
+            System.out.println("Le serveur Socket.IO est déjà en cours d'exécution.");
+        }
     }
 
     @PreDestroy
     public void stopServer() {
-        System.out.println("Arrêt du serveur Socket.IO...");
-        server.stop();
+        if (isRunning) {
+            System.out.println("Arrêt du serveur Socket.IO...");
+            server.stop();
+            isRunning = false;
+        }
+    }
+
+    public boolean isServerRunning() {
+        return isRunning;
     }
 }
