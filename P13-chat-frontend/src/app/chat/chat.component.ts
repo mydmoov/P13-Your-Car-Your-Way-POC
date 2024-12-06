@@ -15,11 +15,14 @@ export class ChatComponent {
   messageContent: string = '';
   sender: string = 'Client';
 
-  constructor(private webSocketService: WebSocketService) {}
+  constructor(private webSocketService: WebSocketService) {
+    }
 
   sendMessage(): void {
     const message = { sender: this.sender, content: this.messageContent };
     this.webSocketService.sendMessage(message);
+    console.log('Sent message:', message);
     this.messageContent = '';
   }
+
 }
