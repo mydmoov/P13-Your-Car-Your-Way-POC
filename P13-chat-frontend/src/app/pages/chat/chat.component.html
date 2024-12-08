@@ -1,0 +1,19 @@
+
+<div class="chat-header">
+  <button class="back-button" (click)="goBack()">Retour</button>
+  <h2>Chat</h2>
+</div>
+<div class="chat-content">
+  <div class="chat-container">
+    <div class="messages">
+      <div *ngFor="let msg of messages">
+        <strong>{{ msg.sender }}:</strong> {{ msg.content }}
+      </div>
+    </div>
+    <div class="input-area">
+      <input [(ngModel)]="messageContent" placeholder="Type your message" />
+      <button (click)="sendMessage()">Send</button>
+    </div>
+  </div>
+  
+</div>

@@ -1,26 +1,23 @@
 package com.yourcaryourway.P13_chat_backend.service;
 
+
+import com.yourcaryourway.P13_chat_backend.controller.payload.MessageResponse;
 import com.yourcaryourway.P13_chat_backend.model.Message;
-import com.yourcaryourway.P13_chat_backend.repository.MessageRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import com.yourcaryourway.P13_chat_backend.controller.payload.MessageRequest;
 
-import java.time.LocalDateTime;
+import java.util.List;
 
-@Service
-public class MessageService {
+public interface MessageService {
 
-    @Autowired
-    private MessageRepository messageRepository;
+    /**
+     *
+     * @param messageRequest  the message send
+     */
+     void saveMessage(MessageRequest messageRequest);
 
-    @Transactional
-    public Message saveMessage(Message message) {
-        if (message == null || message.getSender() == null || message.getContent() == null) {
-            throw new IllegalArgumentException("Le message est invalide.");
-        }
-        message.setTimestamp(LocalDateTime.now());
-        return messageRepository.save(message);
-    }
-
+    /**
+     *
+     * @return {@link MessageResponse} list
+     */
+    List<MessageResponse> getAllMessages();
 }

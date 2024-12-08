@@ -1,11 +1,20 @@
 import { Component } from '@angular/core';
-import { ChatComponent } from './chat/chat.component';
+import { Router, RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [ChatComponent],
-  template: `<app-chat></app-chat>`,
+  imports: [RouterOutlet, CommonModule],
+  templateUrl: './app.component.html',
+
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {}
+export class AppComponent {
+
+  constructor(private router: Router) {}
+
+  startChat() {
+    this.router.navigate(['/chat']);
+  }
+}

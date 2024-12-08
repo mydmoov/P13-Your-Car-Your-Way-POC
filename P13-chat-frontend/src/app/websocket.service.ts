@@ -5,58 +5,52 @@ import { io, Socket } from 'socket.io-client';
   providedIn: 'root',
 })
 export class WebSocketService {
-  private socket: Socket | undefined;
-  private readonly SERVER_URL = 'http://localhost:3666'; // URL du serveur WebSocket
+  public socket: Socket | undefined;
+  private readonly SERVER_URL = 'http://127.0.0.1:8085'; // Mettre à jour avec le nouveau port
 
-  constructor() {}
-
-  // Initialise la connexion WebSocket
+  constructor() {
+  }
 
   initializeWebSocketConnection(): void {
-    try {
-      this.socket = io(this.SERVER_URL, {
-        reconnectionAttempts: 5, // Limite le nombre de tentatives
-        timeout: 5000, // Timeout pour la connexion
-      });
 
-      this.socket.on('connect', () => {
-        console.log('Connected to WebSocket server');
-      });
-
-      this.socket.on('disconnect', () => {
-        console.log('Disconnected from WebSocket server');
-      });
-
-      this.socket.on('chatMessage', (message: any) => {
-        console.log('Received message: ', message);
-      });
-
-      this.socket.on('connect_error', (error: any) => {
-        console.error('WebSocket connection error:', error);
-      });
-
-      this.socket.on('error', (error: any) => {
-        console.error('WebSocket error:', error);
-      });
-    } catch (error) {
-      console.error('Error initializing WebSocket connection:', error);
-    }
-  }
-
-  // Méthode pour envoyer un message via WebSocket
-  sendMessage(message: { sender: string; content: string }): void {
     if (this.socket && this.socket.connected) {
-      this.socket.emit('chatMessage', message);
-    } else {
-      console.warn('WebSocket is not connected. Message not sent:', message);
+      console.warn('WebSocket connection already established');
+      return;
     }
+  
+    this.socket = io(this.SERVER_URL, {
+      timeout:10000,
+      reconnectionAttempts: 3,
+    });
+  
+    this.socket.on('connect', () => {
+      console.log('Connected to WebSocket server');
+    });
+  
+    this.socket.on('disconnect', (reason: string) => {
+      console.warn('Disconnected from WebSocket server:', reason);
+    });
+  
+    this.socket.on('connect_error', (error: any) => {
+      console.error('WebSocket connection error:', error);
+    });
+    
+  }
+  
+  
+
+  sendMessage(message: { sender: string; content: string }): void {
+    if (this.socket) {
+      this.socket.emit('sendMessage', message); // Envoyer un message au serveur
+      console.log('did send message');
+    }
+   
   }
 
-  // Méthode pour déconnecter le socket
   disconnect(): void {
     if (this.socket) {
       this.socket.disconnect();
-      console.log('WebSocket connection closed');
+      this.socket = undefined;
     }
   }
 }
