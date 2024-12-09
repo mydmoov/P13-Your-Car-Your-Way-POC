@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { io, Socket } from 'socket.io-client';
 
 @Injectable({
@@ -8,11 +8,11 @@ export class WebSocketService {
   public socket: Socket | undefined;
   private readonly SERVER_URL = 'http://127.0.0.1:8085'; // Mettre à jour avec le nouveau port
 
-  constructor() {
+  constructor(private ngZone: NgZone) {
   }
 
   initializeWebSocketConnection(): void {
-
+    this.ngZone.runOutsideAngular(() => {
     if (this.socket && this.socket.connected) {
       console.warn('WebSocket connection already established');
       return;
@@ -34,6 +34,7 @@ export class WebSocketService {
     this.socket.on('connect_error', (error: any) => {
       console.error('WebSocket connection error:', error);
     });
+  });
     
   }
   
@@ -53,4 +54,6 @@ export class WebSocketService {
       this.socket = undefined;
     }
   }
+
+  
 }

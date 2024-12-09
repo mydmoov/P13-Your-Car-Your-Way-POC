@@ -1,5 +1,3 @@
-
-
 .chat-container {
   background-color: #0056b3;
   width: 50%;
@@ -17,11 +15,14 @@
   border: 1px solid #ddd;
   padding: 1rem;
   border-radius: 4px;
+  background-color: #fff;
+  color: #333;
 }
 
 .input-area {
   display: flex;
   gap: 0.5rem;
+  align-items: center;
 }
 
 .input-area input {
@@ -29,6 +30,14 @@
   padding: 0.5rem;
   border: 1px solid #ddd;
   border-radius: 4px;
+  font-size: 1rem;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.input-area input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
 .input-area button {
@@ -37,13 +46,15 @@
   background-color: #007bff;
   color: white;
   border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .input-area button:hover {
   background-color: #0056b3;
 }
-
 
 .back-button {
   background: #ab6161;
@@ -54,9 +65,88 @@
   font-size: 1rem;
   cursor: pointer;
   transition: background 0.3s ease;
-  margin-right: 10px;
+  margin-bottom: 10px;
 }
 
 .back-button:hover {
-  background: var(--gray-700);
+  background: #8b4b4b;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .chat-container {
+    width: 90%;
+    padding: 0.5rem;
+  }
+
+  .messages {
+    height: 250px;
+    font-size: 0.9rem;
+  }
+
+  .input-area input {
+    padding: 0.4rem;
+    font-size: 0.9rem;
+  }
+
+  .input-area button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .back-button {
+    font-size: 0.9rem;
+    padding: 4px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chat-container {
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .messages {
+    height: 200px;
+    padding: 0.5rem;
+  }
+
+  .input-area input {
+    padding: 0.3rem;
+    font-size: 0.8rem;
+  }
+
+  .input-area button {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  .back-button {
+    font-size: 0.8rem;
+    padding: 3px 8px;
+  }
+}
+.messages {
+  height: 400px; /* Augmentation de la hauteur */
+  overflow-y: scroll;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .messages {
+    height: 350px; /* Augmentation pour tablettes */
+  }
+}
+
+@media (max-width: 480px) {
+  .messages {
+    height: 300px; /* Augmentation pour mobiles */
+  }
 }
