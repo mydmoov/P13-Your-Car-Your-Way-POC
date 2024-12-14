@@ -37,12 +37,6 @@ public class MessageServiceImpl implements MessageService {
     public List<MessageResponse> getAllMessages() {
         List<Message> messages = messageRepository.findAll();
 
-        // Log des messages avant mappage pour vérifier content et sender
-        messages.forEach(message -> {
-            System.out.println("Message content from DB: " + message.getContent());  // Affiche le content
-            System.out.println("Message sender from DB: " + message.getSender());    // Affiche le sender
-        });
-
         // Utilisez le mapper injecté pour transformer la liste de Message en MessageResponse
         return messageMapper.toMessagesResponse(messages);
     }
