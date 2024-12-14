@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-12-08T19:08:10+0100",
+    date = "2024-12-14T13:37:53+0100",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.11 (Oracle Corporation)"
 )
 @Component
@@ -38,6 +38,7 @@ public class MessageMapperImpl implements MessageMapper {
 
         MessageResponse messageResponse = new MessageResponse();
 
+        messageResponse.setContent( domain.getContent() );
         messageResponse.setSender( domain.getSender() );
 
         return messageResponse;

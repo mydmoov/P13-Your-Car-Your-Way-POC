@@ -17,36 +17,36 @@ export class WebSocketService {
       console.warn('WebSocket connection already established');
       return;
     }
-  
+
     this.socket = io(this.SERVER_URL, {
       timeout:10000,
       reconnectionAttempts: 3,
     });
-  
+
     this.socket.on('connect', () => {
       console.log('Connected to WebSocket server');
     });
-  
+
     this.socket.on('disconnect', (reason: string) => {
       console.warn('Disconnected from WebSocket server:', reason);
     });
-  
+
     this.socket.on('connect_error', (error: any) => {
       console.error('WebSocket connection error:', error);
     });
   });
-    
+
   }
-  
-  
+
 
   sendMessage(message: { sender: string; content: string }): void {
     if (this.socket) {
       this.socket.emit('sendMessage', message); // Envoyer un message au serveur
       console.log('did send message');
     }
-   
+
   }
+
 
   disconnect(): void {
     if (this.socket) {
@@ -55,5 +55,5 @@ export class WebSocketService {
     }
   }
 
-  
+
 }

@@ -22,6 +22,13 @@ public class MessagesController  {
 
     @GetMapping("")
     public List<MessageResponse> getMessages() {
-      return this.messageService.getAllMessages();
+        List<MessageResponse> messages = this.messageService.getAllMessages();
+        // Log des messages avant de les envoyer
+        messages.forEach(message -> {
+            System.out.println(("Message content: {}"+ message.getContent()));
+            System.out.println(("Message content: {}"+ message.getSender()));
+        });
+        return messages;
     }
+
 }
