@@ -3,6 +3,12 @@
   <div class="chat-container">
     <div class="messages">
       <strong>Your Car Your Way - POC chat</strong>
+       <!-- Mise en place du style pour les messages  -->
+       <div class="chat self">
+        <strong class="chatname"> pseudo </strong>
+        <div class="userphoto"></div>
+        <p class="chatmessage">What's up!</p>
+        </div> 
       <div *ngFor="let msg of messages">
         <strong>{{ msg.sender }}:</strong> {{ msg.content }}
       </div>
