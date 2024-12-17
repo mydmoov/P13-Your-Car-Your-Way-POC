@@ -16,7 +16,7 @@ on:
 
 jobs:
   # Job pour la construction, les tests, le rapport de couverture, et l'analyse SonarCloud
-  Build_Test_Coverage_Analyse:
+  Build:
     runs-on: ubuntu-latest
 
     # Définition du répertoire de travail par défaut
@@ -50,14 +50,12 @@ jobs:
      
   # Job secondaire pour la création et le push de l'image Docker du backend
   DockerLogAndBuild:
-    # Condition : Exécute ce job uniquement pour une pull request vers la branche "main"
-    if: github.event_name == 'pull_request' && github.base_ref == 'main'
 
     # Utilise également une image Ubuntu
     runs-on: ubuntu-latest
 
-    # Ce job dépend de la complétion du job "Build_Test_Coverage_Analyse"
-    needs: Build_Test_Coverage_Analyse
+    # Ce job dépend de la complétion du job "Build"
+    needs: Build
 
     # Définition du répertoire de travail par défaut
     defaults:
