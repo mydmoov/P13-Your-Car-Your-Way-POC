@@ -49,11 +49,11 @@ jobs:
 
       # Étape 3 : Installation des dépendances npm
       - name: Installation des dépendances
-        run: npm ci
+        run: npm install
 
       # Étape 4 : Compilation du projet
       - name: Compilation du projet
-        run: npm build
+        run: npm run build
 
  
 

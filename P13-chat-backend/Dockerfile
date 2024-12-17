@@ -1,5 +1,5 @@
 
-FROM maven:3.6.3-jdk-17-slim AS build
+FROM maven:3.9.5-eclipse-temurin-17 AS build
 RUN mkdir -p /workspace
 WORKDIR /workspace
 COPY pom.xml /workspace
