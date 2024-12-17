@@ -86,6 +86,6 @@ jobs:
       # Étape 4 : Construction et push de l'image Docker du backend vers Docker Hub
       - name: Build and push backend Docker image
         run: |
-          docker build -t POC-back .
-          docker tag POC-back ${{ secrets.DOCKER_USERNAME }}/POC-back:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/POC-back:latest
+          docker build -t poc-back .
+          docker tag poc-back ${{ secrets.DOCKER_USERNAME }}/poc-back:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/poc-back:latest

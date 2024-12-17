@@ -93,6 +93,6 @@ jobs:
       # Étape 4 : Construction et push de l'image Docker du frontend vers Docker Hub
       - name: Construire et push de l'image Docker du frontend
         run: |
-          docker build -t POC-front .
-          docker tag POC-front ${{ secrets.DOCKER_USERNAME }}/POC-front:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/POC-front:latest
+          docker build -t poc-front .
+          docker tag poc-front ${{ secrets.DOCKER_USERNAME }}/poc-front:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/poc-front:latest
