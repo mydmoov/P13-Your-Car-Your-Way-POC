@@ -45,7 +45,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
           # Cache des dépendances npm basées sur le fichier package.json
-          cache-dependency-path: front/package.json
+          cache-dependency-path: P13-chat-frontend/package.json
 
       # Étape 3 : Installation des dépendances npm
       - name: Installation des dépendances
