@@ -54,7 +54,7 @@ export class ChatComponent {
     });
     this.messageService.getMessages().subscribe((messages) => {
       this.messages = messages;
-      console.log('Messages:', messages);
+      // console.log('Messages:', messages);
     });
   }
 
