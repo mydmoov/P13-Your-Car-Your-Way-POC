@@ -1,0 +1,11 @@
+{
+  "/messages": {
+    "target": "http://127.0.0.1:3555",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "ws": true
+  }
+}
+
+

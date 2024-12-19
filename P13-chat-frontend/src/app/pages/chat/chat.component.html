@@ -5,17 +5,17 @@
       <strong>Your Car Your Way - POC chat</strong>
        <!-- Mise en place du style pour les messages  -->
 
-       <div class="chat self">
+       <div class="chat self" *ngFor="let msg of messages">
         <div>
           <div class="userphoto">
           </div>
-          <strong class="chatname"> pseudo </strong>
+          <strong class="chatname"> {{ msg.sender }} </strong>
         </div>
-        <p class="chatmessage">What's up!</p>
-        </div> 
-      <div *ngFor="let msg of messages">
-        <strong>{{ msg.sender }}:</strong> {{ msg.content }}
-      </div>
+        <p class="chatmessage">{{ msg.content }}</p>
+        </div>
+<!--      <div *ngFor="let msg of messages">-->
+<!--        <strong>{{ msg.sender }}:</strong> {{ msg.content }}-->
+<!--      </div>-->
     </div>
     <div class="input-area" style="margin-bottom:23px;">
       <input [(ngModel)]="sender" placeholder="Type your pseudo" />
@@ -25,5 +25,5 @@
       <button (click)="sendMessage()">Send</button>
     </div>
   </div>
-  
+
 </div>

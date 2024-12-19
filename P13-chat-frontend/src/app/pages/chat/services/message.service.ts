@@ -10,14 +10,14 @@ import {HttpClient} from "@angular/common/http";
 
 export class MessageService {
 
-  private pathService = '/api/messages'; // Remplacer par l'URL http://localhost:3555/messages
+  private pathService = '/messages'; // Remplacer par l'URL http://localhost:3555/messages
   public constructor(private http: HttpClient) {
   }
 
 
   // Methode pour recevoir les messages
   public getMessages() {
-    return this.http.get<any>(`${this.pathService}`);
+    return this.http.get<any>(`/messages`);
 
   }
 
