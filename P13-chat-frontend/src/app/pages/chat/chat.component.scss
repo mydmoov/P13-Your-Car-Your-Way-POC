@@ -47,6 +47,19 @@ body {
   padding: 5px;
 }
 
+.title_h1{
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  background-color: black;
+  border: #9408cc 2px solid;
+  border-radius: 15px;
+  box-shadow: #91ec0b 0px 0px 25px;
+  padding: 10px;
+}
+
+
 .chat-container {
   width: 100%;
   height: 100%;
@@ -131,6 +144,15 @@ body {
   }
 }
 
+footer {
+  text-align: center;
+  margin-top: 50px;
+  background-color: black;
+  border-radius: 20px;
+  font-size: 16px;
+  padding: 10px;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .chat-container {
@@ -145,18 +167,25 @@ body {
     display: none; /* Masquer la photo de l'utilisateur sur tablettes */
   }
 
+  .section_history{
+    display: none;
+  }
+
   .chat .chatmessage {
     max-width: 90%; /* Prend plus de largeur */
     font-size: 14px;
+    border-radius: 15px;
   }
 
   .input-area input {
     font-size: 14px;
+    border-radius: 15px;
   }
 
   .input-area button {
     font-size: 14px;
     padding: 8px 12px;
+    border-radius: 15px;
   }
 }
 
