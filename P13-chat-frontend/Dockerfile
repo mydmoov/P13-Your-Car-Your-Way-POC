@@ -1,14 +1,14 @@
-FROM node:latest as build
-
+FROM node:18 as build
 WORKDIR /usr/local/app
+# Copier uniquement les fichiers essentiels pour installer les dépendances
+COPY package.json /usr/local/app/
+RUN npm install
+
+# Copier le reste du code source
 COPY ./ /usr/local/app/
-
-RUN yarn
 RUN npm run build
- 
-FROM nginx:latest as production
 
+FROM nginx:latest
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=build /usr/local/app/dist/p13-chat-frontend /usr/share/nginx/html
-
+COPY --from=build /usr/local/app/dist /usr/share/nginx/html
 EXPOSE 80
