@@ -1,23 +1,23 @@
 package com.yourcaryourway.P13_chat_backend.service;
 
 
+import com.yourcaryourway.P13_chat_backend.controller.payload.MessageResponse;
 import com.yourcaryourway.P13_chat_backend.model.Message;
-import com.yourcaryourway.P13_chat_backend.repository.MessageRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import com.yourcaryourway.P13_chat_backend.controller.payload.MessageRequest;
 
-@Service
-public class MessageService {
+import java.util.List;
 
-    @Autowired
-    private MessageRepository messageRepository;
+public interface MessageService {
 
-    @Transactional
-    // Méthode pour sauvegarder un message
-    public Message saveMessage(Message message) {
-        message.setTimestamp(java.time.LocalDateTime.now());  // Ajouter un timestamp
-        Message message1 = messageRepository.save(message);  // Sauvegarde en base de données
-        return message1;  // Sauvegarde en base de données
-    }
+    /**
+     *
+     * @param messageRequest  the message send
+     */
+     void saveMessage(MessageRequest messageRequest);
+
+    /**
+     *
+     * @return {@link MessageResponse} list
+     */
+    List<MessageResponse> getAllMessages();
 }
