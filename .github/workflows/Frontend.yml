@@ -10,6 +10,7 @@ on:
  push:
    branches:
      - evol/docker-config-for-deploy
+     - main
   #  paths:
   #    - 'P13-chat-frontend/**'
 
