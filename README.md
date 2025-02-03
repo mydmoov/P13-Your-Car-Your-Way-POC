@@ -17,15 +17,39 @@ L'application vise à centraliser les opérations de location de voiture tout en
 ## 🛠️ Prérequis
 
 ### **Backend (Spring Boot)**
-- **Java** : Version 11 ou supérieure.
+- **Java** : Version 17 ou supérieure.
+- **Spring Boot** ( JAVA) , architecture microservice
 - **Maven** : Pour gérer les dépendances.
 - **H2** : Pour le stockage des messages de chat.
-
 
 ### **Frontend (Angular)**
 - **Node.js** : Version 18 ou supérieure.
 - **npm** : Gestionnaire de paquets pour Angular.
-- **Angular17**
+- **Angular17** :  TypeScript, Angular Material , architecture modulaire.
+ 
+### **API Gateway**
+- Point d'entrée unique qui centralise, sécurise et distribue les requêtes des clients vers les différents microservices, optimisant ainsi la communication et la gestion des accès.
+- 
+### **Services externes**
+- **Stripe** pour les paiements.
+- **WebRTC** pour la vidéo-assistance.
+
+---
+
+## 📂 Architecture
+
+### Architecture basée sur les microservices pour une scalabilité accrue.
+
+- **Frontend** : Angular 17, TypeScript, Angular Material.
+- **Backend** : Spring Boot Java 3 avec microservices dédiés.
+- **API Gateway** : Sécurisation et distribution des requêtes.
+- **Bases de données** : MySQL (relationnel) et MongoDB (NoSQL pour le chat).
+- **Interopérabilité avec services tiers** : Stripe pour les paiements, WebRTC pour l'assistance vidéo.
+
+## 📋 Fonctionnalités POC
+
+Chat en ligne avec un agent.
+Réponses en temps réel via le chat.
 
 ---
 
@@ -35,16 +59,22 @@ L'application vise à centraliser les opérations de location de voiture tout en
 
 ## 🔧 Configuration des Propriétés Backend
 
-Ajoutez les paramètres suivants dans application.properties ou un fichier database.properties à inclure dans votre projet Spring Boot :
+Ajoutez les paramètres suivants dans application.properties ( ou passer par un fichier database.properties à inclure dans votre projet Spring Boot) :
 
 
-# Configuration MySQL
+### Dans application.properties
 
 ```
+#Vous pouvez parametrer un port spécifique si vous n'utiliser pas celui par defaut.
+server.port=3555
 
-spring.datasource.username=<votre_nom_utilisateur>
-spring.datasource.password=<votre_mot_de_passe>
+spring.datasource.url=jdbc:h2:file:./data/bdd_p13_yourcaryourway
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=user
+spring.datasource.password=password
+spring.h2.console.enabled=true
 spring.jpa.hibernate.ddl-auto=update
+logging.level.org.hibernate.SQL=DEBUG
 ```
 ---
 
@@ -60,28 +90,26 @@ mvn spring-boot:run
 ### 🏃‍♂️ Lancement de l'Application Angular (Frontend)
 
 Installez les dépendances nécessaires :
+
 ```
 npm install
 ```
 Lancez l'application Angular :
+
 ```
 ng serve
 ```
 Ouvrez l'application dans votre navigateur :
+
 ```
 [npm install](http://localhost:4200/)
 ```
 
-## 📂 Architecture
 
-📋 Fonctionnalités POC
-
-Chat en ligne avec un agent.
-Réponses en temps réel via le chat.
 
 ## 📂 Documentation Supplémentaire
 
 
 ## 🎯 Objectif
 
-Ce POC vise à démontrer la faisabilité de la fonctionnalité Chat de l'application. Si vous avez des retours ou des suggestions, n'hésitez pas à les partager ! 😊
+Ce POC vise à démontrer la faisabilité de la fonctionnalité Chat de l'application. Si vous avez des retours ou des suggestions, n'hésitez pas à me les partager ! 😊
