@@ -29,10 +29,11 @@ L'application vise à centraliser les opérations de location de voiture tout en
  
 ### **API Gateway**
 - Point d'entrée unique qui centralise, sécurise et distribue les requêtes des clients vers les différents microservices, optimisant ainsi la communication et la gestion des accès.
-- 
+
 ### **Services externes**
 - **Stripe** pour les paiements.
 - **WebRTC** pour la vidéo-assistance.
+
 
 ---
 
@@ -50,10 +51,6 @@ L'application vise à centraliser les opérations de location de voiture tout en
 
 Chat en ligne avec un agent.
 Réponses en temps réel via le chat.
-
----
-
-## 📂 Configuration de la Base de Données
 
 ---
 
@@ -80,6 +77,42 @@ logging.level.org.hibernate.SQL=DEBUG
 
 ## Lancement :
 
+
+### 📦 Clonage du Projet
+```
+git clone urlprojet 
+```
+
+### 🛢️ Initialisation de la Base de Données
+
+L'application utilise une base de données H2 pour stocker les messages de chat. 
+Vous pouvez accéder à la console H2 en ouvrant le lien suivant dans votre navigateur :
+
+```
+http://localhost:3555/h2-console
+```
+Remplissez les champs de connexion comme suit :
+
+```
+JDBC URL : jdbc:h2:file:./data/bdd_p13_yourcaryourway
+User Name : user
+Password : password
+```
+
+La base de donnée au lancement de l'application se charge automatiquement avec des données de test à partir du fichier :
+
+```
+data.sql 
+```
+
+Pour que Spring Boot charge les données de test, décommentée les ligne 18 et 19 suivante dans application.properties 
+
+```
+#spring.sql.init.mode=always
+#spring.sql.init.data-locations=classpath:data.sql
+```
+
+
 ### 🚀 Lancement de l'Application Spring Boot (Backend)
 
 Lancez l'application Spring Boot à l'aide de Maven :
@@ -105,9 +138,26 @@ Ouvrez l'application dans votre navigateur :
 [npm install](http://localhost:4200/)
 ```
 
+### 🚪 Lancement avec Docker si docker est installer sur votre machine :
 
+``` 
+docker-compose up
+```
+Ensuite rendez vous sur le navigateur à l'adresse suivante : 
+
+``` 
+http://localhost:4200/
+```
+
+Si docker n'est pas installer sur votre machine, vous pouvez l'installer en suivant les instructions sur le site officiel de docker : 
+
+``` 
+https://docs.docker.com/get-docker/
+```
 
 ## 📂 Documentation Supplémentaire
+
+Les documents complémentaires sont disponibles dans le dossier `docs` du projet.
 
 
 ## 🎯 Objectif
