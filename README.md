@@ -105,7 +105,7 @@ La base de donnée au lancement de l'application se charge automatiquement avec 
 data.sql 
 ```
 
-Pour que Spring Boot charge les données de test, décommentée les ligne 18 et 19 suivante dans application.properties 
+Pour que Spring Boot NE charge PAS les données de test, décommentée les ligne 18 et 19 suivante dans application.properties 
 
 ```
 #spring.sql.init.mode=always
