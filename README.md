@@ -135,7 +135,7 @@ ng serve
 Ouvrez l'application dans votre navigateur :
 
 ```
-[npm install](http://localhost:4200/)
+http://localhost:4200/
 ```
 
 ### 🚪 Lancement avec Docker si docker est installer sur votre machine :
