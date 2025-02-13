@@ -6,8 +6,7 @@ import { io, Socket } from 'socket.io-client';
 })
 export class WebSocketService {
   public socket: Socket | undefined;
-  // private readonly SERVER_URL = 'http://127.0.0.1:8085'; // Mettre à jour avec le nouveau port
-  private SERVER_URL = window.location.protocol + "//" + window.location.hostname + ":8085"; // Dynamic URL
+  private readonly SERVER_URL = 'http://127.0.0.1:8085';
   constructor(private ngZone: NgZone) {
   }
 

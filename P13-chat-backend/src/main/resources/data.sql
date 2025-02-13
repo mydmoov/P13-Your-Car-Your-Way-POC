@@ -1,4 +1,11 @@
- TRUNCATE TABLE message;
+CREATE TABLE message (
+                         id INT PRIMARY KEY,
+                         sender VARCHAR(255),
+                         content TEXT
+);
+
+
+TRUNCATE TABLE message;
 
 -- Insertion de messages d'exemple dans la table message
 INSERT INTO message (id, sender, content) VALUES
