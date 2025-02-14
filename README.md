@@ -1,6 +1,12 @@
 # 🚗 Your Car Your Way - Proof of Concept (POC)   ![Your Car Your Way Logo](/P13-chat-frontend/src/assets/images/p13_logo.PNG)
 
+## 🙌🏼 Deployment
 
+Ce projet a été déployée afin d'avoir une visibilité direct dessus sans avoir besoin de charger le projet sur votre machine.
+
+Lien du déploiement :
+
+[POC P13 DEPLOY ](http://82.67.42.254:4200/) 
 
 ## ✨ Introduction :
 
