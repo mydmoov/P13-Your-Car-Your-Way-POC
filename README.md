@@ -6,7 +6,7 @@ Ce projet a été déployée afin d'avoir une visibilité direct dessus sans avo
 
 Lien du déploiement :
 
-[POC P13 DEPLOY ](http://82.67.42.254:4200/) 
+[POC P13 DEPLOY ](https://poc.cortek.fr/). 
 
 ## ✨ Introduction :
 
