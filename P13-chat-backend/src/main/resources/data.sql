@@ -1,16 +1,18 @@
-CREATE TABLE message (
-                         id INT PRIMARY KEY,
-                         sender VARCHAR(255),
-                         content TEXT
-);
+DROP TABLE IF EXISTS message;
 
+CREATE TABLE message (
+                         id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                         sender VARCHAR(255),
+                         content TEXT,
+                         created_at TIMESTAMP,
+                         updated_at TIMESTAMP
+);
 
 TRUNCATE TABLE message;
 
--- Insertion de messages d'exemple dans la table message
-INSERT INTO message (id, sender, content) VALUES
-                                              (1, 'Yumi Ishiyama', 'Bonjour, j’ai besoin d’aide pour ma réservation.'),
-                                              (2, 'FullSTACK', 'Bien sûr, comment puis-je vous aider ?'),
-                                              (3, 'Yumi Ishiyama', 'Je voudrais modifier ma réservation.'),
-                                              (4, 'FullSTACK', 'Pas de problème, donnez-moi plus de détails.'),
-                                              (5, 'Yumi Ishiyama', 'Merci pour votre assistance.');
+INSERT INTO message (sender, content, created_at, updated_at) VALUES
+                                                                  ('Yumi Ishiyama', 'Bonjour, j''ai besoin d''aide pour ma réservation.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+                                                                  ('FullSTACK', 'Bien sûr, comment puis-je vous aider ?', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+                                                                  ('Yumi Ishiyama', 'Je voudrais modifier ma réservation.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+                                                                  ('FullSTACK', 'Pas de problème, donnez-moi plus de détails.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+                                                                  ('Yumi Ishiyama', 'Merci pour votre assistance.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
