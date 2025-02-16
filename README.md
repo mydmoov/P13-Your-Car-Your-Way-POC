@@ -7,6 +7,7 @@ Ce projet a été déployée afin d'avoir une visibilité direct dessus sans avo
 Lien du déploiement :
 
 [POC P13 DEPLOY ](https://poc.cortek.fr/). 
+[Présentation du Projet en PDF](https://www.canva.com/design/DAGdyfT0xCk/tF-Wyy1AA7ozI2KA1ad-2g/view?utm_content=DAGdyfT0xCk&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=haee72262ce).
 
 ## ✨ Introduction :
 
